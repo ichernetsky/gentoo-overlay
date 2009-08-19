@@ -4,6 +4,7 @@
 
 EAPI="2"
 
+LIBTOOLIZE="true"
 inherit autotools subversion
 
 DESCRIPTION="The Open Computer Vision Library is a library for real-time computer vision."
