@@ -14,7 +14,7 @@ EGIT_REPO_URI="git://github.com/richhickey/clojure-contrib.git"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~x86 ~ia64 ~amd64"
 
 IUSE=""
 
@@ -24,10 +24,10 @@ DEPEND=">=virtual/jdk-1.5 dev-lang/clojure"
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
-        java-pkg-2_src_prepare
+	java-pkg-2_src_prepare
 }
 
 src_install() {
-        java-pkg_dojar ${PN}.jar
-        use source && java-pkg_dosrc src/clojure/contrib
+	java-pkg_dojar ${PN}.jar
+	use source && java-pkg_dosrc src/clojure/contrib
 }

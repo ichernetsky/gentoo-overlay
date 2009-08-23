@@ -13,7 +13,7 @@ HOMEPAGE="http://emacswiki.org/cgi-bin/wiki.pl?SimpleWikiEditMode"
 SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~x86 ~ia64 ~amd64"
 IUSE=""
 
 S=${WORKDIR}/${ECVS_MODULE}

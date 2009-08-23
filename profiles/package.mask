@@ -1,0 +1,6 @@
+=app-emacs/http-emacs-9999
+=dev-lang/clojure-9999
+=dev-lang/clojure-contrib-9999
+=dev-lisp/asdf-9999
+=media-libs/nyartoolkit-9999
+=media-libs/opencv-9999

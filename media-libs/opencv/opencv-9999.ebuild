@@ -11,7 +11,7 @@ DESCRIPTION="The Open Computer Vision Library is a library for real-time compute
 HOMEPAGE="http://opencv.willowgarage.com/"
 
 LICENSE="ffmpeg? ( GPL-2 ) xine? ( GPL-2 ) gstreamer? ( LGPL-2.1 ) unicap? ( GPL-2 ) BSD"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ia64 ~amd64"
 SLOT="0"
 
 ESVN_REPO_URI="https://opencvlibrary.svn.sourceforge.net/svnroot/opencvlibrary/trunk/opencv"

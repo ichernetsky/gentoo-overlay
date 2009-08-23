@@ -10,7 +10,7 @@ DESCRIPTION="NYARToolKit is a software library for building Augmented Reality (A
 HOMEPAGE="http://nyatla.jp/nyartoolkit/wiki/index.php?FrontPage.en"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ia64 ~amd64"
 SLOT="0"
 
 ESVN_REPO_URI="http://svn.sourceforge.jp/svnroot/nyartoolkit/NyARToolkitCPP/trunk/"
