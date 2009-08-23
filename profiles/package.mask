@@ -3,6 +3,7 @@
 =dev-lang/clojure-contrib-9999
 =dev-lisp/alexandria-9999
 =dev-lisp/asdf-9999
+=dev-lisp/cl-gtk2-9999
 =dev-lisp/rt-9999
 =dev-lisp/s-sysdeps-9999
 =media-libs/nyartoolkit-9999
