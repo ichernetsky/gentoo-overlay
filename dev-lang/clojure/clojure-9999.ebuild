@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI="2"
 JAVA_PKG_IUSE="source"
 
 inherit java-pkg-2 java-ant-2 git

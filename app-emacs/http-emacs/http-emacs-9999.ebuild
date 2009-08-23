@@ -1,6 +1,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
 ECVS_SERVER="cvs.savannah.nongnu.org:/sources/http-emacs"
 ECVS_MODULE="http-emacs"
 ECVS_AUTH="pserver"
