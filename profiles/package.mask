@@ -4,7 +4,10 @@
 =dev-lisp/alexandria-9999
 =dev-lisp/asdf-9999
 =dev-lisp/cl-gtk2-9999
+=dev-lisp/parenscript-9999
 =dev-lisp/rt-9999
 =dev-lisp/s-sysdeps-9999
+=dev-lisp/trivial-timeout-9999
+=dev-lisp/weblocks-9999
 =media-libs/nyartoolkit-9999
 =media-libs/opencv-9999
