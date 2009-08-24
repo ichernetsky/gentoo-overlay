@@ -38,14 +38,18 @@ RDEPEND="dev-lisp/closer-mop
 	dev-lisp/lift
 	dev-lisp/trivial-timeout"
 
-CLSYSTEMS="${PN} ${PN}-test ${PN}-scripts ${PN}-store-test
-	src/store/clsql/${PN}-clsql
+CLSYSTEMS="${PN}
+	${PN}-test
+	${PN}-scripts
+	${PN}-store-test
 	src/store/elephant/${PN}-elephant
-	src/store/memory/${PN}-memory
 	src/store/prevalence/${PN}-prevalence
-	examples/${PN}-clsql-demo/${PN}-clsql-demo
+	src/store/memory/${PN}-memory
+	src/store/clsql/${PN}-clsql
+	examples/${PN}-elephant-demo/${PN}-elephant-demo
 	examples/${PN}-demo/${PN}-demo
-	examples/${PN}-elephant-demo/${PN}-elephant-demo"
+	examples/${PN}-clsql-demo/${PN}-clsql-demo
+	examples/simple-blog/simple-blog"
 
 S="${WORKDIR}"/${MY_P}
 
