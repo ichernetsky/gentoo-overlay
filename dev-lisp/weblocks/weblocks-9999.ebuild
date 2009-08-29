@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-WEBLOCKS_BRANCH=stable
+WEBLOCKS_BRANCH=dev
 MY_P=${PN}-${WEBLOCKS_BRANCH}
-EHG_REPO_URI=http://bitbucket.org/skypher/${MY_P}/
+EHG_REPO_URI=http://bitbucket.org/S11001001/${MY_P}/
 
 inherit common-lisp-2 mercurial
 
