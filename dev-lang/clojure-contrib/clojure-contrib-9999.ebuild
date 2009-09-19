@@ -23,6 +23,8 @@ DEPEND=">=virtual/jdk-1.5 dev-lang/clojure"
 
 S="${WORKDIR}/${PN}"
 
+EANT_EXTRA_ARGS="-Dclojure.jar=/usr/share/clojure/lib/clojure.jar"
+
 src_prepare() {
 	java-pkg-2_src_prepare
 }
