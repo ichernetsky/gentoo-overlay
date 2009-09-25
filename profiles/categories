@@ -4,5 +4,6 @@ app-emacs
 dev-haskell 
 dev-lang 
 dev-lisp 
+dev-ml 
 media-libs 
 sci-mathematics
