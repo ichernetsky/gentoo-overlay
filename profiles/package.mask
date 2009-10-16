@@ -1,3 +1,4 @@
+=app-emacs/geiser-9999
 =app-emacs/http-emacs-9999
 =dev-lang/clojure-9999
 =dev-lang/clojure-contrib-9999
