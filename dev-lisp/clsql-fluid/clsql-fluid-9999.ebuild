@@ -8,6 +8,8 @@ inherit common-lisp-2 eutils multilib git
 DESCRIPTION="CLSQL based on fluids, or per-thread connections."
 HOMEPAGE="http://common-lisp.net/project/clsql-fluid/"
 EGIT_REPO_URI="git://repo.or.cz/clsql/s11.git"
+EGIT_BRANCH="fluid-pools"
+EGIT_TREE="fluid-pools"
 
 LICENSE="LLGPL-2.1"
 SLOT="0"
@@ -47,8 +49,8 @@ install_clsql_pkg() {
 }
 
 src_install() {
-	common-lisp-install clsql.asd sql/*.lisp clsql-tests.asd tests
-	common-lisp-symlink-asdf clsql clsql-tests
+	common-lisp-install clsql.asd clsql-fluid.asd sql/*.lisp clsql-tests.asd tests
+	common-lisp-symlink-asdf clsql clsql-fluid clsql-tests
 
 	common-lisp-install uffi/*.lisp clsql-uffi.asd
 	common-lisp-symlink-asdf clsql-uffi
