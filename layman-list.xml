@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layman>
+  <overlay contact="ivan.chernetsky@gmail.com"
+	   name="ichernetsky"
+	   src="git://github.com/ichernetsky/gentoo-overlay.git"
+	   status="unofficial"
+	   type="git">
+    <description>Some miscellaneous ebuilds</description>
+  </overlay>
+</layman>
