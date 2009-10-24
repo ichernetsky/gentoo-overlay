@@ -1,4 +1,4 @@
-CATEGORIES:=$(wildcard *-*)
+CATEGORIES:=$(filter-out layman-list.xml,$(wildcard *-*))
 EBUILDS:=$(wildcard *-*/*)
 MANIFESTS:=$(addsuffix /Manifest, $(EBUILDS))
 
