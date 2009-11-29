@@ -5,4 +5,5 @@ dev-lang
 dev-lisp 
 dev-ml 
 dev-util 
-media-libs
+media-libs 
+net-misc
