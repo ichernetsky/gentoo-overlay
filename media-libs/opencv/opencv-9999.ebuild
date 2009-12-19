@@ -9,6 +9,7 @@ inherit autotools subversion
 
 DESCRIPTION="The Open Computer Vision Library is a library for real-time computer vision."
 HOMEPAGE="http://opencv.willowgarage.com/"
+SRC_URI=""
 
 LICENSE="ffmpeg? ( GPL-2 ) xine? ( GPL-2 ) gstreamer? ( LGPL-2.1 ) unicap? ( GPL-2 ) BSD"
 KEYWORDS="~x86 ~ia64 ~amd64"
