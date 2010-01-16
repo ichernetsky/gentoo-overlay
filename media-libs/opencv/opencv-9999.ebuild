@@ -3,97 +3,72 @@
 # $Header: $
 
 EAPI="2"
-
-LIBTOOLIZE="true"
-inherit autotools subversion
+inherit cmake-utils subversion
 
 DESCRIPTION="The Open Computer Vision Library is a library for real-time computer vision."
 HOMEPAGE="http://opencv.willowgarage.com/"
 SRC_URI=""
 
-LICENSE="ffmpeg? ( GPL-2 ) xine? ( GPL-2 ) gstreamer? ( LGPL-2.1 ) unicap? ( GPL-2 ) BSD"
+LICENSE="v4l? ( GPL-2 ) xine? ( GPL-2 ) Intel"
 KEYWORDS="~x86 ~ia64 ~amd64"
 SLOT="0"
 
-ESVN_REPO_URI="https://opencvlibrary.svn.sourceforge.net/svnroot/opencvlibrary/trunk/opencv"
+ESVN_REPO_URI="https://code.ros.org/svn/opencv/trunk/opencv"
 
-IUSE="debug examples ffmpeg gstreamer gthread gtk ieee1394 jpeg jpeg2k octave openexr openmp png python quicktime sse swig tiff unicap v4l xine zlib"
+IUSE="debug deprecated examples ffmpeg gstreamer gtk ieee1394 ipp jpeg jpeg2k
+	mmx octave openmp png python sse sse2 sse3 test tiff v4l xine"
 
-RDEPEND="openmp? ( >=sys-devel/gcc-4.2[openmp] )
-	swig? ( >=dev-lang/swig-1.3.30 )
-	python? ( >=dev-lang/python-2.5 )
-	octave? ( >=sci-mathematics/octave-2.9.12 )
-	xine? ( media-libs/xine-lib )
-	gstreamer? ( >=media-libs/gstreamer-0.10 )
-	ffmpeg? ( media-video/ffmpeg )
-	ieee1394? ( media-libs/libdc1394 sys-libs/libraw1394 )
-	unicap? ( media-libs/unicap )
-	quicktime? ( media-libs/libquicktime )
-	gtk? ( >=x11-libs/gtk+-2 )
-	gthread? ( dev-libs/glib )
-	jpeg? ( media-libs/jpeg )
+RDEPEND="sys-libs/zlib
+	ipp? ( sci-libs/ipp )
+	python? ( >=dev-lang/python-2.5
+		deprecated? ( dev-lang/swig ) )
+	ieee1394? ( sys-libs/libraw1394
+		media-libs/libdc1394:2 )
+	ffmpeg? ( >=media-video/ffmpeg-0.5 )
+	gstreamer? ( media-libs/gstreamer )
+	gtk? ( x11-libs/gtk+:2 )
 	jpeg2k? ( media-libs/jasper )
-	zlib? ( sys-libs/zlib )
+	jpeg? ( media-libs/jpeg )
+	png? ( media-libs/libpng )
 	tiff? ( media-libs/tiff )
-	png? ( >=media-libs/libpng-1.2 )
-	openexr? ( media-libs/openexr )"
+	xine? ( media-libs/xine-lib )
+	octave? ( sci-mathematics/octave
+		dev-lang/swig )"
 
 DEPEND="${RDEPEND}
-	>=sys-devel/autoconf-2.63
-	>=sys-devel/automake-1.9
-	gstreamer? ( dev-util/pkg-config )"
-
-pkg_setup() {
-	use quicktime && use ffmpeg && die "You cannot specify quicktime and ffmpeg use flags at the same time"
-	use quicktime && use xine && die "You cannot specify quicktime and xine use flags at the same time"
-	use quicktime && use ieee1394 && die "You cannot specify quicktime and ieee1394 use flags at the same time"
-	use quicktime && use v4l && die "You cannot specify quicktime and v4l use flags at the same time"
-	use gstreamer && use ffmpeg && die "You cannot specify gstreamer and ffmpeg use flags at the same time"
-}
-
-src_prepare() {
-	sed -i "s:ffmpeg/avcodec.h:libavcodec/avcodec.h:g" "${S}/configure.in"
-	sed -i "s:ffmpeg/swscale.h:libswscale/swscale.h:g" "${S}/configure.in"
-	sed -i "s:<ffmpeg/avformat.h>:<libavformat/avformat.h>:g" "${S}/src/highgui/cvcap_ffmpeg.cpp"
-	sed -i "s:<ffmpeg/avcodec.h>:<libavcodec/avcodec.h>:g" "${S}/src/highgui/cvcap_ffmpeg.cpp"
-	sed -i "s:<ffmpeg/swscale.h>:<libswscale/swscale.h>:g" "${S}/src/highgui/cvcap_ffmpeg.cpp"
-	eautoreconf
-}
+	dev-util/pkgconfig"
 
 src_configure() {
-	local enable_optimization;
-	if use debug; then
-		enable_optimization="";
-	else
-		enable_optimization="--enable-optimization";
+	mycmakeargs="${mycmakeargs}
+		-DCMAKE_SKIP_RPATH=ON
+		$(cmake-utils_use_build examples)
+		$(cmake-utils_use_build python NEW_PYTHON_SUPPORT)
+		$(cmake-utils_use_build octave OCTAVE_SUPPORT)
+		$(cmake-utils_use_build test TESTS)
+		$(cmake-utils_use_enable openmp)
+		$(cmake-utils_use ipp USE_IPP)
+		$(cmake-utils_use mmx USE_MMX)
+		-DUSE_O3=OFF
+		-DUSE_OMIT_FRAME_POINTER=OFF
+		$(cmake-utils_use sse USE_SSE)
+		$(cmake-utils_use sse2 USE_SSE2)
+		$(cmake-utils_use sse3 USE_SSE3)
+		$(cmake-utils_use_with ieee1394 1394)
+		$(cmake-utils_use_with ffmpeg)
+		$(cmake-utils_use_with gstreamer)
+		$(cmake-utils_use_with gtk)
+		$(cmake-utils_use_with jpeg2k jasper)
+		$(cmake-utils_use_with jpeg)
+		$(cmake-utils_use_with png)
+		$(cmake-utils_use_with tiff)
+		-DWITH_UNICAP=OFF
+		$(cmake-utils_use_with v4l)
+		$(cmake-utils_use_with xine)"
+
+	if use python; then
+		mycmakeargs="${mycmakeargs}
+			$(cmake-utils_use_build deprecated SWIG_PYTHON_SUPPORT)"
 	fi
 
-	econf \
-		--enable-shared \
-		--without-native-lapack \
-		${enable_optimization} \
-		$(use_enable debug) \
-		$(use_enable examples apps) \
-		$(use_with ffmpeg) \
-		$(use_with gstreamer) \
-		$(use_with gthread) \
-		$(use_with gtk) \
-		$(use_with ieee1394 1394libs) \
-		$(use_with octave) \
-		$(use_enable openmp) \
-		$(use_with python) \
-		$(use_with quicktime) \
-		$(use_enable sse) \
-		$(use_with swig) \
-		$(use_with unicap) \
-		$(use_with v4l) \
-		$(use_with xine)
-}
-
-src_compile() {
-	emake || die "emake failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	cmake-utils_src_configure
 }
