@@ -1,0 +1,49 @@
+diff --git a/OMakefile b/OMakefile
+index a2dd744..d594c01 100644
+--- a/OMakefile
++++ b/OMakefile
+@@ -17,7 +17,9 @@ OCAMLCFLAGS += -g
+ OCAMLDEP_MODULES_ENABLED = false
+ OCAMLROOT = $(shell ocamlfind printconf destdir)
+ DOCROOT = /usr/share/doc/ocaml-batteries/
++DOCROOT_INSTALL = $(DOCROOT)
+ BROWSER_COMMAND = x-www-browser %s
++DESTDIR_PREFIX = /usr/lib/ocaml/
+ 
+ NAME = batteries
+ VERSION = 1.0.0
+@@ -55,7 +57,7 @@ uninstall:
+ 	  rm -rf $(DOCROOT)
+ 
+ install: all build/META
+-	$(OCAMLFIND) install $(NAME) build/META $(BAT_FILES)
++	$(OCAMLFIND) install -destdir $(DESTDIR_PREFIX) $(NAME) build/META $(BAT_FILES)
+ 
+ doc: src/batteries.cma
+ 	if $(not $(test -e hdoc/index.html))
+@@ -63,9 +65,9 @@ doc: src/batteries.cma
+ 	  -sort -html -d hdoc -I src src/*.mli
+ 
+ install-doc: doc
+-	$(INSTALL) -d $(DOCROOT)
+-	$(INSTALL) hdoc/* $(DOCROOT)
+-	$(INSTALL) doc/batteries/*.idex doc/batteries/*.help $(DOCROOT)
++	$(INSTALL) -d $(DOCROOT_INSTALL)
++	$(INSTALL) hdoc/* $(DOCROOT_INSTALL)
++	$(INSTALL) doc/batteries/*.idex doc/batteries/*.help $(DOCROOT_INSTALL)
+ 
+ test: testsuite/main.opt testsuite/main.run
+ 	testsuite/main.opt && testsuite/main.run
+diff --git a/libs/estring/OMakefile b/libs/estring/OMakefile
+index cec6e32..c9299a0 100644
+--- a/libs/estring/OMakefile
++++ b/libs/estring/OMakefile
+@@ -9,7 +9,7 @@ META: VERSION META.in
+ FILES[] = pa_estring.cmi pa_estring.cmo pa_estring_top.cmo
+ 
+ install: $(FILES) META
+-	$(OCAMLFIND) install estring META *.mli *.cmi *.cmo
++	$(OCAMLFIND) install -destdir $(DESTDIR_PREFIX) estring META *.mli *.cmi *.cmo
+ 
+ uninstall:
+ 	$(OCAMLFIND) remove estring
