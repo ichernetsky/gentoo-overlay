@@ -12,7 +12,7 @@ HOMEPAGE="http://clojure.org/"
 EGIT_BRANCH="master"
 EGIT_REPO_URI="git://github.com/richhickey/clojure.git"
 
-LICENSE="CPL-1.0 BSD"
+LICENSE="EPL-1.0 BSD"
 SLOT="0"
 KEYWORDS="~x86 ~ia64 ~amd64"
 
@@ -23,13 +23,10 @@ DEPEND=">=virtual/jdk-1.5"
 
 S="${WORKDIR}/${PN}"
 
-src_prepare() {
-	java-pkg-2_src_prepare
-}
-
 src_install() {
 	java-pkg_dojar ${PN}.jar
 	java-pkg_dolauncher ${PN} --main clojure.main
-	dodoc readme.txt || die "dodoc failed"
-	use source && java-pkg_dosrc src/jvm/closure
+	dodoc readme.txt || die "cannot dodoc readme.txt"
+	dodoc epl-v10.html || die "cannot dodoc epl-v10.html"
+	use source && java-pkg_dosrc src/jvm/clojure
 }
