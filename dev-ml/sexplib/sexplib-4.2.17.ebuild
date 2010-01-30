@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -11,7 +11,7 @@ SRC_URI="http://ocaml.info/ocaml_sources/${PN}310-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~ia64 ~amd64"
+KEYWORDS="~amd64 ~x86 ~ia64"
 IUSE=""
 S=${WORKDIR}/${PN}310-${PV}/lib
 
