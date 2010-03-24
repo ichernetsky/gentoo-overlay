@@ -1,0 +1,25 @@
+diff --git a/OMakefile b/OMakefile
+index 1bb5cba..1baeb0a 100644
+--- a/OMakefile
++++ b/OMakefile
+@@ -15,6 +15,7 @@ OCAMLCFLAGS += -g
+ OCAMLDEP_MODULES_ENABLED = false
+ OCAMLROOT = $(shell ocamlfind printconf destdir)
+ DOCROOT = $(getenv BATTERIES_DOCROOT,/usr/share/doc/ocaml-batteries/)
++DOCROOT_INSTALL = $(DOCROOT)
+ BROWSER_COMMAND = x-www-browser %s
+ 
+ NAME = batteries
+@@ -76,9 +77,9 @@ install-doc: doc
+ 		mkdir $(DOCROOT)
+ 		copy hdoc.* doc/batteries/*.idex doc/batteries/*.help $(DOCROOT)
+ 	else
+-		$(INSTALL) -d $(DOCROOT)
+-		$(INSTALL) -m 644 hdoc/* $(DOCROOT)
+-		$(INSTALL) -m 644 doc/batteries/*.idex doc/batteries/*.help $(DOCROOT)
++		$(INSTALL) -d $(DOCROOT_INSTALL)
++		$(INSTALL) -m 644 hdoc/* $(DOCROOT_INSTALL)
++		$(INSTALL) -m 644 doc/batteries/*.idex doc/batteries/*.help $(DOCROOT_INSTALL)
+ 
+ test: $(if $(NATIVE_ENABLED), testsuite/main.opt) testsuite/main.run
+ 	$(if $(NATIVE_ENABLED), testsuite/main.opt &&) testsuite/main.run

@@ -6,5 +6,8 @@ dev-lang
 dev-lisp 
 dev-ml 
 dev-util 
+games-fps 
+media-fonts 
 media-libs 
-net-misc
+net-misc 
+sys-fs
