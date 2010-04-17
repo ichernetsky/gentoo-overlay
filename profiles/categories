@@ -3,6 +3,7 @@ app-doc
 app-editors 
 app-emacs 
 dev-lang 
+dev-libs 
 dev-lisp 
 dev-ml 
 dev-util 
