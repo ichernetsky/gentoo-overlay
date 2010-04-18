@@ -1,0 +1,24 @@
+diff --git a/xpath.lisp b/xpath.lisp
+index 90b603e..d1d97ee 100644
+--- a/xpath.lisp
++++ b/xpath.lisp
+@@ -191,12 +191,13 @@
+ (defun normalize-text-nodes! (node)
+   (when (typep node 'stp:parent-node)
+     (let ((children (%children node)))
+-      (when (loop
+-	       for child across children
+-	       for a = nil then b
+-	       for b = (typep child 'text)
+-	       thereis (and b (or a (zerop (length (stp:data child))))))
+-	(let ((previous nil)
++      (when (and children
++                 (loop
++                    for child across children
++                    for a = nil then b
++                    for b = (typep child 'text)
++                    thereis (and b (or a (zerop (length (stp:data child)))))))
++	(let ((previous-sibling  nil)
+ 	      (results '()))
+ 	  (stp:do-children (child node)
+ 	    (cond

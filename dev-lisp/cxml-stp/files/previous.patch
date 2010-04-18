@@ -1,0 +1,13 @@
+diff --git a/xpath.lisp b/xpath.lisp
+index d1d97ee..f1e5af5 100644
+--- a/xpath.lisp
++++ b/xpath.lisp
+@@ -197,7 +197,7 @@
+                     for a = nil then b
+                     for b = (typep child 'text)
+                     thereis (and b (or a (zerop (length (stp:data child)))))))
+-	(let ((previous-sibling  nil)
++	(let ((previous nil)
+ 	      (results '()))
+ 	  (stp:do-children (child node)
+ 	    (cond
