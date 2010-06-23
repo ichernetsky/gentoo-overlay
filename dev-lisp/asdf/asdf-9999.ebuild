@@ -25,7 +25,7 @@ src_compile() {
 }
 
 src_install() {
-	common-lisp-install {asdf,wild-modules,asdf-install}.lisp
+	common-lisp-install {asdf,wild-modules,asdf-ecl}.lisp
 	dodoc README
 	docinto examples && dodoc test/*
 }
