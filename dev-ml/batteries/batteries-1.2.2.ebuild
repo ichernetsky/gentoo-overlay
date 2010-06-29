@@ -7,7 +7,7 @@ inherit multilib eutils
 
 DESCRIPTION="Batteries is just the OCaml development platform"
 HOMEPAGE="http://batteries.forge.ocamlcore.org/"
-SRC_URI="https://forge.ocamlcore.org/frs/download.php/366/${P}.tar.gz"
+SRC_URI="https://forge.ocamlcore.org/frs/download.php/423/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
