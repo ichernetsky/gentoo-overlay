@@ -11,5 +11,4 @@ media-fonts
 media-gfx 
 media-libs 
 net-misc 
-sys-fs 
-x11-libs
+sys-fs
