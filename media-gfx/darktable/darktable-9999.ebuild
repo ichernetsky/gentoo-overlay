@@ -42,8 +42,8 @@ DEPEND="${RDEPEND}
 	openmp? ( >=sys-devel/gcc-4.4[openmp] )"
 
 src_configure() {
-	MYCMAKEARGS="$(cmake-utils_use_use openmp OPENMP)
-		$(cmake-utils_use_use gconf GCONF_BACKEND)
-		$(cmake-utils_use_use gphoto CAMERA_SUPPORT)"
+	MYCMAKEARGS="$(cmake-utils_use_use openmp OPENMP)"
+	MYCMAKEARGS="$MYCMAKEARGS $(cmake-utils_use_use gconf GCONF_BACKEND)"
+	MYCMAKEARGS="$MYCMAKEARGS $(cmake-utils_use_use gphoto CAMERA_SUPPORT)"
 	cmake-utils_src_configure
 }
