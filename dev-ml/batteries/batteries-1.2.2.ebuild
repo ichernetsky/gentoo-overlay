@@ -16,8 +16,8 @@ IUSE="+ocamlopt doc"
 
 RDEPEND=">=dev-lang/ocaml-3.11
 	ocamlopt? ( >=dev-lang/ocaml-3.11[ocamlopt] )
-	>=dev-ml/camomile-0.7
-	ocamlopt? ( >=dev-ml/camomile-0.7[ocamlopt] )
+	=dev-ml/camomile-0.7*
+	ocamlopt? ( =dev-ml/camomile-0.7*[ocamlopt] )
 	>=dev-ml/findlib-1.2.5"
 
 DEPEND="${RDEPEND}"
