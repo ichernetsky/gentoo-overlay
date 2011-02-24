@@ -1,10 +1,9 @@
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI="2"
 
-EGIT_REPO_URI="git://gitorious.org/geiser/mainline.git"
-EGIT_BRANCH="master"
+EGIT_REPO_URI="git://git.sv.gnu.org/geiser.git"
 
 inherit elisp git
 
@@ -13,7 +12,7 @@ HOMEPAGE="http://gitorious.org/geiser"
 SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ia64 ~amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 SITEFILE=70geiser-gentoo.el
