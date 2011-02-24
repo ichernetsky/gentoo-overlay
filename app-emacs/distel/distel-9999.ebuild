@@ -1,15 +1,14 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
 
-inherit elisp eutils subversion
+inherit elisp eutils git
 
 DESCRIPTION="Distributed Emacs Lisp for Erlang"
-HOMEPAGE="http://fresh.homeunix.net/~luke/distel/"
-ESVN_REPO_URI="http://distel.googlecode.com/svn/trunk/"
+HOMEPAGE="https://github.com/massemanet/distel"
+EGIT_REPO_URI="git://github.com/massemanet/distel.git"
 
-# "New BSD License" according to http://code.google.com/p/distel/
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
