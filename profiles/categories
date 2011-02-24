@@ -4,12 +4,9 @@ app-doc
 app-editors 
 app-emacs 
 dev-db 
-dev-lang 
-dev-lisp 
 dev-ml 
 dev-util 
 media-fonts 
 media-gfx 
 media-libs 
-net-misc 
-sys-fs
+net-misc
