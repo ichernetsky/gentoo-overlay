@@ -1,6 +1,5 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI="2"
 
@@ -14,7 +13,7 @@ SRC_URI="http://tech.motion-twin.com/zip/${P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 RDEPEND="dev-lang/ocaml"
@@ -36,4 +35,3 @@ src_install() {
 	make install || die "make install failed"
 	dodoc doc/* README
 }
-

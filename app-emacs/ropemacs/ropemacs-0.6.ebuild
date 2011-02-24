@@ -1,6 +1,5 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=""
 
@@ -9,10 +8,12 @@ inherit distutils eutils elisp-common
 DESCRIPTION="Rope interface for Emacs"
 HOMEPAGE="http://rope.sourceforge.net/"
 SRC_URI="mirror://sourceforge/rope/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
+
 RESTRICT="nomirror"
 DEPEND=">=dev-python/rope-0.7.7
 	>=app-emacs/pymacs-0.23"
