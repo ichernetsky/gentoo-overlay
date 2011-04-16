@@ -3,6 +3,7 @@ app-benchmarks
 app-doc 
 app-editors 
 app-emacs 
+app-text 
 dev-db 
 dev-ml 
 dev-util 
