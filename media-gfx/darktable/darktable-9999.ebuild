@@ -31,21 +31,24 @@ RDEPEND="dev-db/sqlite:3
 	media-libs/libpng
 	media-libs/libraw
 	gnome-base/librsvg:2
-        sdl? ( media-libs/libsdl[opengl] )
+	sdl? ( media-libs/libsdl[opengl] )
 	media-libs/openexr
 	media-libs/tiff
 	net-misc/curl
+	sys-devel/gettext
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:2"
+	>=x11-libs/gtk+-2.6"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	openmp? ( >=sys-devel/gcc-4.4[openmp] )"
 
 src_configure() {
-        MYCMAKEARGS="-DDONT_INSTALL_GCONF_SCHEMAS=ON"
+	MYCMAKEARGS="-DDONT_INSTALL_GCONF_SCHEMAS=ON"
+	MYCMAKEARGS="$MYCMAKEARGS -DAPRIL_FOOLS=OFF"
 	MYCMAKEARGS="$MYCMAKEARGS $(cmake-utils_use_use openmp OPENMP)"
 	MYCMAKEARGS="$MYCMAKEARGS $(cmake-utils_use_use gconf GCONF_BACKEND)"
 	MYCMAKEARGS="$MYCMAKEARGS $(cmake-utils_use_use gphoto CAMERA_SUPPORT)"
+	MYCMAKEARGS="$MYCMAKEARGS $(cmake-utils_use_use doc BUILD_USERMANUAL)"
 	cmake-utils_src_configure
 }
