@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
-inherit eutils cmake-utils git
+inherit eutils gnome2-utils cmake-utils git
 
 DESCRIPTION="Darktable is a virtual lighttable and darkroom for photographers"
 HOMEPAGE="http://darktable.sf.net/"
@@ -41,7 +41,9 @@ RDEPEND="dev-db/sqlite:3
 	>=x11-libs/gtk+-2.6"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
-	openmp? ( >=sys-devel/gcc-4.4[openmp] )"
+	openmp? ( >=sys-devel/gcc-4.4[openmp] )
+	x11-proto/dri2proto
+	x11-proto/glproto"
 
 src_configure() {
 	MYCMAKEARGS="-DDONT_INSTALL_GCONF_SCHEMAS=ON"
@@ -51,4 +53,21 @@ src_configure() {
 	MYCMAKEARGS="$MYCMAKEARGS $(cmake-utils_use_use gphoto CAMERA_SUPPORT)"
 	MYCMAKEARGS="$MYCMAKEARGS $(cmake-utils_use_use doc BUILD_USERMANUAL)"
 	cmake-utils_src_configure
+}
+
+pkg_preinst() {
+	gnome2_gconf_savelist
+	gnome2_icon_savelist
+}
+
+pkg_postinst() {
+	gnome2_gconf_install
+	gnome2_icon_cache_update
+	gnome2_scrollkeeper_update
+}
+
+pkg_postrm() {
+	gnome2_gconf_uninstall
+	gnome2_icon_cache_update
+	gnome2_scrollkeeper_update
 }
